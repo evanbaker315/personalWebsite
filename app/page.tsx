@@ -56,8 +56,8 @@ export default function HomePage() {
               src: '/images/edgebet-market-comparison.png',
               width: 1179,
               height: 2556,
-              alt: "EdgeBet's Arbs screen comparing over and under prices from BetUS and BetOpenly for a baseball game.",
-              caption: 'Comparing a sportsbook price with an exchange price in EdgeBet.',
+              alt: "EdgeBet's Arbs screen showing an arbitrage opportunity between BetUS and BetOpenly on a baseball game.",
+              caption: "EdgeBet's Arbs screen, showing an arbitrage opportunity between BetUS and BetOpenly on a baseball game.",
               portrait: true,
             }}
             link={{ href: APP_STORE_URL, label: 'On the App Store' }}
@@ -66,7 +66,9 @@ export default function HomePage() {
               An iOS app for people who bet across several sportsbooks and want
               the math instead of opinions. It compares prices across books,
               peer-to-peer exchanges, and a prediction market, accounting for
-              margin and fees. I built the mobile app and the backend.
+              margin and fees, and turns that into three things: arbitrage,
+              positive EV, and bonus bet conversion. I built the mobile app and
+              the backend.
             </p>
             <p>
               EdgeBet sells tools, not picks. That means there is no pick record
