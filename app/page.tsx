@@ -33,7 +33,7 @@ export default function HomePage() {
               alt: 'Demarly agent hierarchy with a CEO above CMO and CFO leads, connected to specialist workers.',
               caption: 'The CEO, department leads, and specialist workers in Demarly.',
             }}
-            link={{ href: 'https://demarly.ai', label: 'Live at demarly.ai' }}
+            link={{ href: 'https://www.demarly.ai', label: 'Live at demarly.ai' }}
           >
             <p>
               Demarly gives founders and small teams AI agents that research,
@@ -78,7 +78,7 @@ export default function HomePage() {
           </CompanyEntry>
         </Section>
 
-        <Section id="work" title="Selected work">
+        <Section id="work" title="Selected work" reveal>
           <p>
             The part I actually care about is usually below the interface.
           </p>
@@ -131,7 +131,7 @@ export default function HomePage() {
           </div>
         </Section>
 
-        <Section id="writing" title="Writing">
+        <Section id="writing" title="Writing" reveal>
           <p>
             I write about engineering, AI, probability, and what I learn
             building companies.

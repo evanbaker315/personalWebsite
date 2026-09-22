@@ -57,6 +57,7 @@
 
 .caption a {
   display: block;
+  width: fit-content;
 }
 
 @media (min-width: 768px) {

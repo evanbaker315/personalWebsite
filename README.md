@@ -1,5 +1,6 @@
 # Project 1 - Build Your Personal Website
 
+Personal website link: https://evanbaker315.github.io/personalWebsite/ 
 **CSCI 498E / 598E - Coding with AI Agents**
 
 | | |

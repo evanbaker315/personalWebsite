@@ -3,63 +3,71 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import styles from './Section.module.css'
 
-/**
- * A homepage section: one h2 in the column, its content 32px below.
- *
- * Vertical rhythm above the heading comes from the single global
- * `section { padding-top: var(--section-gap) }` rule, not from here.
- *
- * Sections fade and lift into place the first time they cross into view, a
- * quiet supporting motion behind MethodLine's scroll marker rather than a
- * second focal effect. `visible` defaults to true so a section that never
- * gets a layout effect (no JS, or JS that errors) simply renders in its
- * final state: the animation is an enhancement, never a hiding mechanism. A
- * synchronous getBoundingClientRect check in useLayoutEffect, not the
- * IntersectionObserver callback itself, decides the *starting* state, because
- * the observer's first callback is asynchronous and would otherwise let an
- * already-on-screen section flash from hidden back to visible after paint.
- */
+/** Opt-in, once-only motion. Server output and unsupported browsers stay visible. */
 export default function Section({
   id,
   title,
   children,
+  reveal = false,
 }: {
   id: string
   title: string
   children: React.ReactNode
+  reveal?: boolean
 }) {
   const headingId = `h-${id}`
   const ref = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(true)
+  const [instant, setInstant] = useState(false)
 
   useLayoutEffect(() => {
     const el = ref.current
-    if (!el || typeof IntersectionObserver === 'undefined') return
+    if (!reveal || !el || typeof IntersectionObserver === 'undefined') return
 
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const isTarget = () => {
+      const target = document.getElementById(window.location.hash.slice(1))
+      return target !== null && el.contains(target)
+    }
     const rect = el.getBoundingClientRect()
-    if (rect.top < window.innerHeight && rect.bottom > 0) return
+    if (motion.matches || isTarget() || el.contains(document.activeElement)
+      || rect.top < window.innerHeight) return
 
-    setVisible(false)
-
+    const show = (immediately = false) => {
+      if (immediately) setInstant(true)
+      setVisible(true)
+      observer.disconnect()
+    }
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setVisible(true)
-          observer.disconnect()
-        }
+        if (entries.some((entry) => entry.isIntersecting)) show()
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+      // A zero threshold works even when a section is taller than the viewport.
+      { threshold: 0 },
     )
+    const onFocus = () => show(true)
+    const onHashChange = () => { if (isTarget()) show(true) }
+    const onMotionChange = () => { if (motion.matches) show(true) }
+
     observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
+    setVisible(false)
+    el.addEventListener('focusin', onFocus)
+    window.addEventListener('hashchange', onHashChange)
+    motion.addEventListener('change', onMotionChange)
+    return () => {
+      observer.disconnect()
+      el.removeEventListener('focusin', onFocus)
+      window.removeEventListener('hashchange', onHashChange)
+      motion.removeEventListener('change', onMotionChange)
+    }
+  }, [reveal])
 
   return (
     <section
       id={id}
       aria-labelledby={headingId}
       ref={ref}
-      className={`${styles.reveal} ${visible ? '' : styles.pending}`}
+      className={`${reveal ? styles.reveal : ''} ${visible ? '' : styles.pending} ${instant ? styles.instant : ''}`}
     >
       <div className="wrap">
         <h2 id={headingId}>{title}</h2>

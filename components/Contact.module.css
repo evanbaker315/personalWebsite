@@ -19,6 +19,7 @@
   }
 
   .links a {
+    --link-underline-position: calc(50% + 0.55em);
     display: inline-flex;
     align-items: center;
     min-height: 44px;

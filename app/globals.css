@@ -170,15 +170,37 @@ a {
   text-underline-offset: 0.18em;
   text-decoration-skip-ink: auto;
   transition:
-    color 120ms linear,
-    text-decoration-color 120ms linear,
-    text-decoration-thickness 120ms linear;
+    color 180ms ease-out;
 }
 
 a:hover,
 a:active {
   color: var(--navy);
-  text-decoration-thickness: 2px;
+}
+
+/* Keep a static 1px underline as a link cue. The 2px hover stroke draws over
+   that same line, including each fragment of a wrapped inline link. */
+a:where(:not(.skip):not([aria-label]):not(:has(img, svg))) {
+  text-decoration: none;
+  background-image:
+    linear-gradient(var(--navy), var(--navy)),
+    linear-gradient(var(--navy), var(--navy));
+  background-repeat: no-repeat;
+  background-position: left var(--link-underline-position, bottom);
+  background-size: 0% 2px, 100% 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: color 180ms ease-out, background-size 180ms ease-out;
+}
+
+a:where(:not(.skip):not([aria-label]):not(:has(img, svg))):is(:hover, :focus-visible) {
+  background-size: 100% 2px, 100% 1px;
+}
+
+@media (forced-colors: active) {
+  a:where(:not(.skip):not([aria-label]):not(:has(img, svg))) {
+    text-decoration: underline;
+  }
 }
 
 a:focus-visible {

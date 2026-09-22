@@ -17,6 +17,13 @@ Name one thing you dropped or added along the way, and why.
 <!-- DRAFT - Evan: review/edit. Written at project start (2026-09-10); the "what changed"
 half gets updated as the build actually happens. -->
 
+I set out to build a site that shows what I am building and how I think about things. My first goal was to
+hit the course requirments, and secondly to build a website people can go to if they want to learn more about me. 
+I intentionally kept the design of the website bland, as the goal of it is to quickly allow potential collaborators
+or investors on my projects to get information quickly, and know that I am someone who takes function, operations,
+and engineering seriosly. Some things that changed along the way were that I added the little scroll animation to the right
+side of the screen to make the site a bit more interesting.  
+
 I want a site that shows what I build and how I think. The course requirements come
 first. After that, I want a founder home base I can keep using. Demarly and EdgeBet
 lead, with Nucli8 and professional work adding evidence. The thread is understanding
@@ -90,6 +97,13 @@ was one agent doing the work and judging it from every angle. Separate reviewers
 should expose different gaps, but add coordination and report-reading work. Their
 reviews are simulations. They do not replace a real reader or the class deliverables.
 
+<!-- DRAFT - Evan: review/edit. Motion choice, 2026-09-22. -->
+
+I added a quick navy underline on link hover and a small reveal on Selected Work
+and Writing. The alternative was just the underline. I kept the reveal to two
+sections so the whole page does not animate. Reduced motion shows everything
+instantly. That adds a little code and checking, but keeps the content easy to reach.
+
 ---
 
 ## 3. Where you overruled the agent
@@ -103,6 +117,8 @@ check in order to notice. Being honest here costs you far less than a story you 
 defend when you record your video.
 
 *Your answer here.*
+
+I overruled the agent in a couple of places. Firstly, I overruled it on the colors. At first I wanted a black and white website with brown and navy accents. However, the 
 
 ---
 

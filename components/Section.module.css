@@ -3,16 +3,31 @@
   margin-top: var(--s4);
 }
 
-/* Quiet supporting motion, not the page's authored moment: that's
-   MethodLine's scroll marker. Short duration, small lift, one confident
-   arrival curve, no stagger of children. */
+/* Only Work and Writing opt in. No stagger, bounce, or repeating entrance. */
 .reveal {
   transition:
-    opacity 380ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pending {
   opacity: 0;
-  transform: translateY(var(--s2));
+  transform: translateY(var(--s1));
+}
+
+/* Navigation never waits for a reveal, even before its JS event runs. */
+.reveal:focus-within,
+.reveal:target,
+.instant {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
