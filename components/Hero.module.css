@@ -1,0 +1,57 @@
+.hero {
+  padding-block: var(--s6);
+}
+
+@media (min-width: 480px) {
+  .hero {
+    padding-block: var(--s7);
+  }
+}
+
+/* Name and tagline group as identity; the lead separates as a claim. */
+.tagline {
+  margin-top: var(--s2);
+  font-size: var(--t-tagline);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.lead {
+  margin-top: var(--s4);
+  max-width: 40ch;
+  font-size: var(--t-lead);
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
+.actions {
+  margin-top: var(--s5);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s5);
+  font-size: var(--t-ui);
+  line-height: 1.5;
+}
+
+/* Below 480px the row becomes a column and each link becomes a 44px tap target.
+   These three anchors are the site's only navigation, so they get the platform
+   convention rather than the 24px WCAG floor. `min-height` is a tap-target
+   constraint, not a spacing value: it is the third documented exception to the
+   8px scale, alongside the 3px focus offset and the 0.18em underline offset in
+   globals.css. The gap between the links stays on the scale. Finding design-09. */
+@media (max-width: 479px) {
+  .actions {
+    flex-direction: column;
+    gap: var(--s1);
+  }
+
+  .actions a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: var(--s1);
+  }
+}

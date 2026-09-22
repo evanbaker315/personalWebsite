@@ -1,0 +1,129 @@
+/* Desktop: fixed, not sticky, visible for the whole page, vertically centered
+   on the right edge, independent of scroll position. z-index stays below the
+   skip link's focus state (globals.css, z-index: 10) so a keyboard user
+   tabbing in still sees the skip target on top. */
+.rail {
+  position: fixed;
+  top: 50%;
+  right: var(--s1);
+  transform: translateY(-50%);
+  z-index: 5;
+  background: var(--band);
+  border-radius: 999px;
+  padding: var(--s2) var(--s1);
+}
+
+.rail ::selection {
+  background: var(--band-ink);
+  color: var(--ink);
+}
+
+.track {
+  position: relative;
+}
+
+.line,
+.fill {
+  position: absolute;
+  left: calc(50% - 1px);
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+}
+
+.line {
+  background: var(--band-ink-2);
+}
+
+.fill {
+  background: var(--band-ink);
+  transform: scaleY(var(--fill, 0));
+  transform-origin: top;
+  transition: transform 200ms ease;
+}
+
+.stops {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stops a {
+  display: flex;
+  margin: calc(var(--s1) * -1);
+  padding: var(--s1);
+  color: var(--band-ink-2);
+}
+
+.stops a:hover {
+  color: var(--band-ink);
+}
+
+.stops a:focus-visible {
+  outline: 2px solid var(--band-ink);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.reached {
+  color: var(--band-ink);
+}
+
+/* Below 640px a vertical rail has nowhere to go: the mobile gutter is 20px
+   and the rail's own footprint (dot + padding) is wider than that, so it
+   would sit on top of the last few characters of body text on every line
+   that runs to the edge. A full-width bottom bar sidesteps the problem
+   entirely instead of shrinking the rail to fit, and puts it in the thumb
+   zone, which is where a one-handed mobile visitor already expects primary
+   controls to live. */
+@media (max-width: 639px) {
+  .rail {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    border-radius: 0;
+    padding: var(--s2) var(--gutter) calc(var(--s2) + env(safe-area-inset-bottom));
+  }
+
+  .track {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .line,
+  .fill {
+    left: 4px;
+    right: 4px;
+    top: calc(50% - 1px);
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+
+  .fill {
+    transform: scaleX(var(--fill, 0));
+    transform-origin: left;
+  }
+
+  .stops {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

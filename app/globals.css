@@ -1,0 +1,248 @@
+/*
+  Global stylesheet. Implements reports/design-spec.md sections 2, 3, 4 and 7.
+
+  Scope is deliberately narrow (spec section 10): tokens, color-scheme, a minimal
+  reset, base element type, link states, and the two shared utilities (.wrap and
+  .skip). Everything else lives in a component CSS module and consumes these
+  tokens with var(). No component redefines a color, a size or a spacing value.
+
+  Every clamp() below is written with spaces around + on purpose. CSS math
+  requires it, and without it font-size fails silently at computed-value time:
+  the element inherits its parent size, with no console error and nothing that
+  looks broken. See spec section 3, "Hard implementation warning".
+*/
+
+:root {
+  color-scheme: light;
+
+  /* Color. Accents are role-bound: navy is interaction only, brown is
+     annotation only, and neither is ever allowed inside .band. */
+  --paper: #ffffff;
+  --ink: #000000;
+  --ink-2: #4d4d4d;
+  --navy: #1f3352;
+  --brown: #6b4a2f;
+  --rule: #000000;
+  --band: #000000;
+  --band-ink: #ffffff;
+  --band-ink-2: #b8b8b8;
+  --surface-code: #f5f5f5;
+  --select-bg: #dde3ee;
+
+  /* Type. The two variable-font families are injected by next/font in
+     app/layout.tsx; the rest of each stack is the fallback chain. */
+  --font-display: var(--font-newsreader), Charter, "Bitstream Charter",
+    "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-text: var(--font-public-sans), "Helvetica Neue", Helvetica, Arial,
+    system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --t-h1: clamp(2.25rem, 1.2rem + 4.5vw, 3.5rem);
+  --t-h1-article: clamp(2rem, 1.4rem + 2.6vw, 2.75rem);
+  --t-h2: clamp(1.875rem, 1.4rem + 2.2vw, 2.75rem);
+  --t-h3: clamp(1.375rem, 1.2rem + 0.8vw, 1.625rem);
+  --t-lead: clamp(1.25rem, 1.075rem + 0.75vw, 1.4375rem);
+  --t-tagline: 1.25rem;
+  --t-body: 1.1875rem;
+  --t-ui: 1.0625rem;
+  --t-meta: 0.9375rem;
+
+  /* Space. 8px multiples only. Three documented exceptions: the 3px focus
+     offset and the 0.18em underline offset, both optical, neither layout; and
+     the 44px `min-height` tap-target floor on the stacked link rows below 480px
+     (Hero.module.css, Contact.module.css), which is a hit-area constraint set
+     by the platform convention rather than a spacing value. Gaps, padding and
+     margins stay on the scale in all three cases. */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --s5: 48px;
+  --s6: 64px;
+  --s7: 96px;
+  --s8: 128px;
+
+  --w-page: 680px;
+
+  /* Mobile-first. The sm/md overrides below move all three together. */
+  --gutter: 20px;
+  --section-gap: var(--s6);
+  --band-pad: var(--s5);
+}
+
+@media (min-width: 480px) {
+  :root {
+    --gutter: 24px;
+    --section-gap: var(--s7);
+    --band-pad: var(--s6);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+    --section-gap: var(--s8);
+    --band-pad: var(--s7);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Root font-size is never set in px, so browser text-size preferences and
+     200% zoom both scale correctly. */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--t-h1);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: var(--t-h2);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: var(--t-h3);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  max-width: 65ch;
+}
+
+ul,
+ol {
+  margin: 0;
+}
+
+li {
+  max-width: 65ch;
+}
+
+/* Section rhythm is one rule. Spec section 10 allows exactly one override,
+   which lives in the component module that owns the element:
+   .entry + .entry (Building). */
+section {
+  padding-top: var(--section-gap);
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--navy);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: auto;
+  transition:
+    color 120ms linear,
+    text-decoration-color 120ms linear,
+    text-decoration-thickness 120ms linear;
+}
+
+a:hover,
+a:active {
+  color: var(--navy);
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--select-bg);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}
+
+/* The single content column. The page never has a second one. */
+.wrap {
+  width: 100%;
+  max-width: calc(var(--w-page) + (var(--gutter) * 2));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/*
+  Skip link. The old off-canvas parking spot (left: -9999px) never caused
+  horizontal scroll, but it did put a real bounding box 9999px outside the
+  viewport, which trips any honest "is anything outside the viewport" audit.
+  This is the clip-path visually-hidden pattern instead: the box stays 1px at
+  its static position and is clipped away, so it is invisible, still in the
+  accessibility tree, and still inside the viewport at every width.
+
+  On focus it becomes position: fixed rather than absolute, so it pins to the
+  top-left of the viewport instead of the top-left of the document. That
+  matters on the article pages, where a reader can Tab after scrolling.
+*/
+.skip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip:focus {
+  position: fixed;
+  left: var(--s1);
+  top: var(--s1);
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  z-index: 10;
+  background: var(--paper);
+  color: var(--ink);
+  padding: var(--s1) var(--s2);
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+}

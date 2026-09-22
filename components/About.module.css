@@ -1,0 +1,28 @@
+.body p + p {
+  margin-top: var(--s3);
+}
+
+/* Only reachable once a real photo exists. Kept next to the component it
+   belongs to so adding the image is a one-line change, not a layout rebuild. */
+.withPhoto {
+  display: grid;
+  gap: var(--s4);
+}
+
+.photo {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .withPhoto {
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+  }
+
+  .photo {
+    width: 200px;
+    height: 250px;
+  }
+}

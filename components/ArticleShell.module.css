@@ -1,0 +1,29 @@
+.chrome {
+  font-size: var(--t-ui);
+  line-height: 1.5;
+}
+
+.header {
+  padding-top: var(--s5);
+}
+
+.main {
+  padding-top: var(--s6);
+}
+
+.footer {
+  padding-top: var(--s7);
+  padding-bottom: var(--s5);
+}
+
+/* Article-scale h1. Shared by the article pages and the writing index so the
+   two never drift apart. */
+.title {
+  font-size: var(--t-h1-article);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.pageIntro {
+  margin-top: var(--s3);
+}

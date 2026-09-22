@@ -1,0 +1,22 @@
+.entries {
+  margin-top: var(--s5);
+}
+
+.entry + .entry {
+  margin-top: var(--s5);
+}
+
+/* Secondary ink, not brown. Same shape as a company deck, deliberately not the
+   same color: the deck and the link are what distinguish the two sections, and
+   the accent list reserves brown for company decks and article meta. */
+.source {
+  margin-top: var(--s1);
+  color: var(--ink-2);
+  font-size: var(--t-meta);
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+}
+
+.body {
+  margin-top: var(--s3);
+}

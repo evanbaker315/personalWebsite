@@ -1,0 +1,80 @@
+/* Two companies need real separation. The one documented override of the
+   global section rhythm. */
+.entry + .entry {
+  margin-top: var(--s6);
+}
+
+/* Past the ordinary h3 scale on purpose: see the component doc comment.
+   Companies are the flagship content, so they get the one size step between
+   h3 and h2 that nothing else on the page uses. */
+.name {
+  font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.125rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+/* Bumped past the article/work meta rows it otherwise shares a role with
+   (same brown, same "classification" job): uppercase and tracked so it reads
+   as a deliberate label, not a shrunken second sentence. */
+.deck {
+  margin-top: var(--s2);
+  color: var(--brown);
+  font-size: var(--t-ui);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.content {
+  display: grid;
+  gap: var(--s3);
+  margin-top: var(--s3);
+}
+
+.figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.portrait .figure {
+  width: 100%;
+  max-width: 288px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  margin-top: var(--s1);
+  color: var(--ink-2);
+  font-size: var(--t-meta);
+  line-height: 1.5;
+}
+
+.caption a {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .portrait {
+    grid-template-columns: minmax(0, 1fr) 288px;
+    column-gap: var(--s4);
+    align-items: start;
+  }
+}
+
+.body p + p {
+  margin-top: var(--s2);
+}
+
+/* An ordinary ink link with the navy underline. Brown is never used for a link
+   and a link is never placed inside a brown line. */
+.link {
+  margin-top: var(--s3);
+  font-size: var(--t-ui);
+  line-height: 1.5;
+}

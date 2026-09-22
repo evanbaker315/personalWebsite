@@ -1,0 +1,17 @@
+/* Renders at its natural (viewBox) pixel size up to the column width, and
+   scales down, never up, below that so it never gets blurry on a wide
+   screen or overflows a narrow one. */
+.diagram {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin-top: var(--s4);
+}
+
+.label {
+  font-family: var(--font-text);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  fill: var(--ink);
+}

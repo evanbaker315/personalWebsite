@@ -1,0 +1,27 @@
+.links {
+  margin-top: var(--s4);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s5);
+  font-size: var(--t-ui);
+  line-height: 1.5;
+}
+
+/* Same 44px tap-target floor as the hero action row. See the note in
+   Hero.module.css: `min-height` is the third documented exception to the 8px
+   scale. Finding design-09. */
+@media (max-width: 479px) {
+  .links {
+    flex-direction: column;
+    gap: var(--s1);
+  }
+
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: var(--s1);
+  }
+}

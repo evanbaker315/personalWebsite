@@ -1,0 +1,18 @@
+/* More space above a heading than below it, always. */
+.body {
+  margin-top: var(--s4);
+}
+
+/* Quiet supporting motion, not the page's authored moment: that's
+   MethodLine's scroll marker. Short duration, small lift, one confident
+   arrival curve, no stagger of children. */
+.reveal {
+  transition:
+    opacity 380ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pending {
+  opacity: 0;
+  transform: translateY(var(--s2));
+}

@@ -1,0 +1,22 @@
+.footer {
+  padding-top: var(--s7);
+  padding-bottom: var(--s5);
+}
+
+/* Below 640px MethodLine's rail becomes a fixed bottom bar (see
+   MethodLine.module.css); without this the bar would sit on top of the
+   footer's last line at the end of the page. */
+@media (max-width: 639px) {
+  .footer {
+    padding-bottom: calc(var(--s7) + env(safe-area-inset-bottom));
+  }
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  color: var(--ink-2);
+  font-size: var(--t-meta);
+  line-height: 1.5;
+}
