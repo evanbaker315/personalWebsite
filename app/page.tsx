@@ -118,7 +118,7 @@ export default function HomePage() {
 
             <WorkEntry
               title="Production AI infrastructure"
-              source="Tyler Technologies and Cloud303, as part of engineering teams"
+              source="Applied AI and software engineering at multiple large enterprises, on engineering teams"
             >
               Before the companies, I worked on AI systems inside other
               people&apos;s production environments. Document pipelines with
