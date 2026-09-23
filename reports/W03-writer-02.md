@@ -159,7 +159,7 @@ lands later, the category must not be restyled into anything that reads as publi
 the article's history.
 
 **c. The two mandatory Selected Work source lines: both render in full, neither is buried.** Exact
-strings `Nucli8, built, not launched` and `Tyler Technologies and Cloud303, as part of engineering
+strings `Nucli8, built, not launched` and the employer source line `..., as part of engineering
 teams` are present verbatim. Each sits as the second line of its entry, directly under the h3 and
 above the paragraph, at 8px, well above the fold of its own section. `WorkEntry.tsx` makes `source` a
 required prop with a comment saying it is load-bearing, so it cannot be dropped by a later edit
