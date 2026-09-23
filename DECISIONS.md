@@ -11,64 +11,18 @@ Delete these instructions when you are done, or leave them. It does not matter.
 
 ## 1. What did you set out to build, and what changed?
 
-What you wanted at the start, and what is actually live now.
-Name one thing you dropped or added along the way, and why.
-
-<!-- DRAFT - Evan: review/edit. Written at project start (2026-09-10); the "what changed"
-half gets updated as the build actually happens. -->
 
 I set out to build a site that shows what I am building and how I think about things. My first goal was to
 hit the course requirments, and secondly to build a website people can go to if they want to learn more about me. 
-I intentionally kept the design of the website bland, as the goal of it is to quickly allow potential collaborators
+I intentionally kept the design of the website plain, as the goal of it is to quickly allow potential collaborators
 or investors on my projects to get information quickly, and know that I am someone who takes function, operations,
-and engineering seriosly. Some things that changed along the way were that I added the little scroll animation to the right
-side of the screen to make the site a bit more interesting.  
+and engineering seriously. Some things that changed along the way were that I added the little scroll animation to the right
+side of the screen to make the site a bit more interesting.  I also added it so that if you hover on a link there is a little
+animation. I added these things because the site felt somewhat bland, so I tried to find some ways to keep it  simple
+yet also add excitement. Another thing I did to make it more interesting was adding the screenshot from my apps, this added
+some more interesting visuals for a user to look at.
 
-I want a site that shows what I build and how I think. The course requirements come
-first. After that, I want a founder home base I can keep using. Demarly and EdgeBet
-lead, with Nucli8 and professional work adding evidence. The thread is understanding
-complicated systems and turning them into useful software and businesses.
 
-The plan grew to eight homepage sections and ten article drafts before the site was
-built. After review, I narrowed the first version to a compact homepage and three
-articles. The other seven stay in the backlog. The thesis and current-status content
-can fit into the intro, company descriptions, and About without repeating everything.
-Each company also needs a clear explanation of who it helps and a real product
-decision, not just architecture details.
-
-I chose mostly black and white, with small brown and navy accents if they fit. In the
-build the base flipped: white paper, black ink, and one full-bleed black band holding
-a four-station line reading system, model, software, business. That band is the only
-non-white surface on the site and the only drawn element. The reason was practical.
-Deep brown and deep navy are real ink colors on white. On black they have to lighten
-into tan and pale blue, which is the beige look I did not want, and three long
-articles read better on a light page anyway.
-
-<!-- DRAFT - Evan: review/edit. Product image direction accepted 2026-09-22. -->
-
-I added screenshots from Demarly and EdgeBet so people can see the products. They
-replace the little pipeline diagrams. The site keeps its black and white base, but
-the screenshots keep their actual colors. I chose real product screens over custom
-illustrations because they show what I built. Full-size links let people inspect
-the details without making every image huge on the homepage.
-
-The site now runs locally: a compact homepage plus three articles. Live verification
-is still pending, because nothing is deployed yet.
-
-<!-- DRAFT - Evan: review/edit. Content direction accepted 2026-09-22. -->
-
-I also cut back the repeated explanations. The company sections explain what people
-can use and a product decision I made. Selected Work holds the engineering detail,
-and the articles go deeper. The alternative was keeping every explanation on the
-homepage, but the same ledger and pricing stories kept showing up twice. I chose
-to make the opening more specific and give each section a different job.
-
-I also asked for separate coding, design, and writing agents, followed by investor,
-employer, teacher, and classmate review agents. Each leaves a Markdown report. One
-coordinator keeps the task list and decision log in sync. The builders have run. The
-four audience reviewers have not yet, and their reviews are simulations either way.
-
----
 
 ## 2. A fork in the road
 
@@ -80,31 +34,16 @@ Say which you picked, what the alternative was, and what you gave up by not taki
 
 "There was no alternative" is not an answer. Find the fork.
 
-<!-- DRAFT - Evan: review/edit. Planning decision, 2026-09-10. -->
+One fork that I chose was to go with Next.js. Even though for this project I wanted to keep the 
+site simple and basic HTML/CSS may have been easier. At some point I may want to change my website for marketing.
+If I do this, I may want to make it cooler. And choosing next js will give me a lot more ability to extend the site in the 
+future and add in the features I may want. 
 
-I initially picked plain HTML and CSS. I then changed the plan to Next.js. The
-implementation plan uses the App Router, TypeScript, shared layouts, and statically
-generated article pages. GitHub Pages is still the deployment target, so the site
-will export static files instead of requiring a running application server.
 
-The tradeoff is more setup: dependencies, a build, and checks that the exported
-pages work as well as the development server. Shared components and article layouts
-should make the site easier to extend. This is the chosen approach, not a claim
-that it has already been implemented or tested.
+Another fork I had was changing from building the site with one claude window. To using a team of agents to do it. 
+I split the agents into builders and reviwers, so that the agents checking the work are not the ones
+who wrote it. This helps ensure agents are critical when reviewing the websites look and content. 
 
-For the agent workflow, I separated building from audience review. The alternative
-was one agent doing the work and judging it from every angle. Separate reviewers
-should expose different gaps, but add coordination and report-reading work. Their
-reviews are simulations. They do not replace a real reader or the class deliverables.
-
-<!-- DRAFT - Evan: review/edit. Motion choice, 2026-09-22. -->
-
-I added a quick navy underline on link hover and a small reveal on Selected Work
-and Writing. The alternative was just the underline. I kept the reveal to two
-sections so the whole page does not animate. Reduced motion shows everything
-instantly. That adds a little code and checking, but keeps the content easy to reach.
-
----
 
 ## 3. Where you overruled the agent
 
@@ -117,8 +56,15 @@ check in order to notice. Being honest here costs you far less than a story you 
 defend when you record your video.
 
 *Your answer here.*
+I overruled the agent in a couple of places. Firstly, I overruled it on the colors. At first I wanted a black and white website 
+with brown and navy accents. However, the site it orignally made was way to heavy on the brown and navy. So I overwrote its styling rules around coloring to make the website better hit the asthetic that I wanted. 
 
-I overruled the agent in a couple of places. Firstly, I overruled it on the colors. At first I wanted a black and white website with brown and navy accents. However, the 
+The second time I overruled it was the scroll rail. The agent built a big black band under the hero with
+a four station diagram in it and defended the design in its code comments. I scrolled the
+actual build and it was useless. The band scrolls away, so you never see the marker move,
+and the four stations did not match anything on the page. So I replaced it with the animation on the left. 
+
+
 
 ---
 
@@ -131,25 +77,28 @@ A check that could not have failed is not a check.
 
 Link to your `verification/` folder.
 
-<!-- DRAFT - Evan: review/edit. The live half of this answer does not exist yet. The
-     verification/ folder gets filled after the first real deploy, and this draft has to
-     be finished then. What is written below is real and already ran. -->
 
-The check that earned its place is boring to describe and would have been invisible
-without it. The type scale is set with CSS `clamp()`. If you write `clamp(2.25rem,1.2rem+4.5vw,3.5rem)`
-without spaces around the `+`, it parses fine, throws no console error, and then fails
-silently later: the heading just inherits its parent's size. The page does not look
-broken. It looks flat. So instead of eyeballing it, I opened the exported site in a
-headless browser and asserted the computed font size of the h1: 56px at a 1440px window,
-36px at 375px. It passed.
+The main check I had the ai run is boring but necessary. My type scale is set with CSS `clamp()`. Write
+`clamp(2.25rem, 1.2rem+4.5vw, 3.5rem)` without spaces around the `+` and it parses fine,
+throws no error, then fails quietly. The heading just inherits its parent's size. If this fails the
+page does not look broken just looks boring. So instead of eyeballing it I had the ai open the
+exported site in a headless browser and checked the real computed font size of the h1
+56px at 1440px, 36px at 375px and see if it passed. The same run also checks that nothing
+sits outside the viewport at 375, 640 and 1440, and that no navy or brown resolves on the
+black surface. It could have failed. A version of it did, on a diagram I had on the site that
+I ended up replacing with the screenshots where the specified size read
+15px but the rendered size was 13.88px because SVG text scales with its viewBox.
 
-That check could have failed, and a nearly identical one nearly did somewhere else. The
-same run also asserts that no element sits outside the viewport at three widths, and that
-no navy or brown ever resolves inside the black band, which is the rule that keeps dark
-accent text off a black background.
+The last check on every change was me, on localhost, before anything stayed. That is how
+the scroll rail got rebuilt twice and how I caught the brown and navy being too heavy.
+The automated check tells you the CSS did what it says. It does not tell you the site is
+any good to use.
 
-TODO after deploy: link `verification/` and add the live-URL fetch, which is the check
-that proves the thing is actually up rather than just correct on my machine.
+Verification: [`verification/`](verification/). Live site:
+[https://evanbaker315.github.io/personalWebsite/](https://evanbaker315.github.io/personalWebsite/).
+The folder has the `curl -i` of that URL coming back 200, and a screenshot with the URL
+bar showing so it is the live site and not my laptop.
+
 
 ---
 
@@ -160,8 +109,13 @@ fully understand.
 
 What would you do next, and how would you find out?
 
-*Your answer here.*
+One thing on the site that I dont think if fully right is that it is still a little bland. I went pretty hard on the clean,
+professional, and slightly premuim look. But because of this, I ended up making the site a little bit to boring. 
+If I had more time to work I would focus on adding in a few more small animations, such as the side one I added in, and the ones on the 
+links. 
 
+Also, to find out what I should do next. I am really excited to read my fellow students comments on my website, and
+implement some of the feedback that they give me. 
 ---
 
 <!-- AGENT NOTES, not part of the submitted log. Per CLAUDE.md, the agent logs one line

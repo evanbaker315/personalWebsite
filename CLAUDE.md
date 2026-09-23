@@ -56,7 +56,7 @@ The repo is public and its full git history is public.
 
 ## Writing voice
 
-From `context/main.md` §21-22 and §38, calibrated by `context/voice.md` (which includes real writing samples). The short version: Evan's voice is raw and plain, Denver not prep school. He is a college-educated founder with corporate engineering experience, but he talks straight. Short declarative sentences. Concrete over grand. Technical when useful, never jargon-heavy. Understated confidence: the site provides evidence and lets the visitor conclude Evan is impressive; it never says so itself.
+From `context/main.md` §21-22 and §38, calibrated by `context/voice.md` (which includes real writing samples to use). The short version: Evan's voice is raw and plain, Denver not prep school. He is a college-educated founder with corporate engineering experience, but he talks straight. Short declarative sentences. Concrete over grand. Technical when useful, never jargon-heavy. Understated confidence: the site provides evidence and lets the visitor conclude Evan is impressive; it never says so itself.
 
 - **No em dashes. Ever. Anywhere.** Not in site copy, not in DECISIONS.md, not in any file written for this project. Use periods, commas, colons, or parentheses instead. This is a hard rule from Evan.
 - **Gen Z and street slang is welcome on the site.** "Cooked," "maxing," casual hedges like "kinda": these are Evan's real words. Use them where they land naturally; don't force them, and don't sand them off either.
